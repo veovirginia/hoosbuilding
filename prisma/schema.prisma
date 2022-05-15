@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id            String   @id @default(cuid())
+  description   String
+  name          String
+ 
+  company_url   String?
+  image_url     String?
+  founding_year String
+  location      String?
+  founders      Founder[]
+  published     Boolean  @default(false)
+
+  category      Category @relation(fields: [categoryID], references: [id])
+  categoryID    String
+  funding_stage FundingStage @relation(fields: [fundingStageID], references: [id])
+  fundingStageID String
+
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+}
+
+model Founder {
+  id            String   @id @default(cuid())
+  name          String
+  grad_year     String?
+  url           String?
+  company       Company  @relation(fields: [companyID], references: [id])
+  companyID     String
+  email         String?
+}
+
+model Category {
+  id            String   @id @default(cuid())
+  name          String
+  companies     Company[]
+}
+
+model FundingStage {
+  id            String   @id @default(cuid())
+  name          String
+  companies     Company[]
+}
