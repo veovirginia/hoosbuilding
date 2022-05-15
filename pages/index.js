@@ -25,7 +25,9 @@ export const getStaticProps = async () => {
      },
      } );
   companies.map((item) => {
-    item.created_at = item.created_at.toString();
+    if (item.createdAt !== null) {
+      item.createdAt = item.createdAt.toString();
+    }
   });
 
   return { props: { companies } };
