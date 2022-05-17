@@ -4,23 +4,98 @@
 }
 
 .splash {
-    height: calc(100vh - 500px);
     display: grid;
     grid-template-rows: 1fr 100px;
-    row-gap: 48px;
-    margin-top: calc(143px);
+    row-gap: 60px;
+    margin-left: 6%;
+    margin-right: 6%;
+    margin-top: 80px;
 }
 
 .splashContent {
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 20%;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 5%;
 }
 
-.splashHeader {
+.tagline {
+    font-size: 56px;
+    background: -webkit-linear-gradient(var(--orange), var(--navy));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.desc{
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+
+.interested {
+    cursor: pointer;
+    font-size: 16px;
     margin-left: auto;
     margin-right: auto;
+    padding: 1rem 3rem;
+    background-color: var(--orange);
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: .2s ease;
+}
+
+.interested:hover {
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.interestedContainer {
+    width: 100%;
+    text-align: center;
+}
+
+
+.companyOptions {
+    border: 1px solid rgba(204, 204, 204, 0.5);
+    border-radius: 16px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.addCompany, .updateCompany {
+    font-size: 16px;
+    cursor: pointer;
+    padding: 1rem 3rem;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    border-radius: 8px;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    text-align: center;
+    align-items: center;
+    transition: .2s ease;
+}
+
+.addCompany {
+    background-color: var(--navy);
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.updateCompany {
+    background-color: white;
+    color: black;
+    margin-bottom: 2rem;
+    border: 1px solid rgb(0 0 0 / 7%);
+}
+
+.optionsTagline {
+    padding: 2rem;
 }
 
 .companyCards {
@@ -45,8 +120,8 @@
     margin-bottom: 20px;
 }
 
-.companyOuterCard:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.companyOuterCard:hover, .addCompany:hover, .updateCompany:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.15);
 }
 
 .companyInnerCard {

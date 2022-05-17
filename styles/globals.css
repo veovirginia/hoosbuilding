@@ -1,12 +1,14 @@
 :root {
-  --primary: green;
+  --orange: #FF7A00;
+  --navy: #0C009A;
   --inner-card-side-margin: 8px;
   --inner-card-section-margin: 4px;
   --side-margin: 64px;
 }
 
-
-
+.addCompany {
+  display: inline-block
+}
 
 html,
 body {

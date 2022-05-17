@@ -1,11 +1,17 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Router from 'next/router'
 import { prisma } from '../lib/prisma.js';
 import { GetServerSideProps } from 'next';
+import HeaderCompanyOptions from '../components/HeaderCompanyOptions';
 
 
 export const getStaticProps = async () => {
+  if (prisma === null) {
+    return null
+  }
+
   const companies = await prisma.company.findMany(
     {where: { published: true },
      include: {
@@ -47,8 +53,14 @@ export default function Home(props) {
       <main className={styles.main}>
         <div className={styles.splash}>
           <div className={styles.splashContent}>
-          <h1 className={styles.splashHeader}>The largest community of student builders at the University of Virginia.</h1>
-          <h1>Options</h1>
+            <div className={styles.left}>
+              <h1 className={styles.tagline}>The largest community of student builders at the University of Virginia.</h1>
+              <p className={styles.desc}>We’re bringing together the best and brightest builders in Charlottesville. Members have access to exclusive yada yada yada blah blah blah words etc. etc.</p>
+              <div className={styles.interestedContainer}>
+                <div className={styles.interested} onClick={() => console.log("Im interested clicked")}>I'm interested</div>
+              </div>
+            </div>
+            <HeaderCompanyOptions />
           </div>
         </div>
         <div className={styles.companyCards}>
