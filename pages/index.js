@@ -54,8 +54,10 @@ export default function Home(props) {
         <div className={styles.splash}>
           <div className={styles.splashContent}>
             <div className={styles.left}>
-              <h1 className={styles.tagline}>The largest community of student builders at the University of Virginia.</h1>
-              <p className={styles.desc}>We’re bringing together the best and brightest builders in Charlottesville. Members have access to exclusive yada yada yada blah blah blah words etc. etc.</p>
+              <div className={styles.leftText}>
+                <h1 className={styles.tagline}>The largest community of student builders at the University of Virginia.</h1>
+                <p className={styles.desc}>We’re bringing together the best and brightest builders in Charlottesville. Members have access to exclusive yada yada yada blah blah blah words etc. etc.</p>
+              </div>
               <div className={styles.interestedContainer}>
                 <div className={styles.interested} onClick={() => console.log("Im interested clicked")}>I'm interested</div>
               </div>

@@ -21,18 +21,25 @@
 
 .tagline {
     font-size: 56px;
-    background: -webkit-linear-gradient(var(--orange), var(--navy));
+    /* background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+            linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%); */
+    background: -webkit-linear-gradient(var(--orange) 25%, var(--navy));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-top: 0px;
+    padding-top: 32px;
     margin-bottom: 0px;
+    
 }
 
 .desc{
     font-size: 16px;
-    margin-top: 16px;
-    margin-bottom: 24px;
+    margin-top: 24px;
+    padding-bottom: 32px;
+    margin-bottom: 10px;
+
 }
 
 .interested {
@@ -57,6 +64,13 @@
 .interestedContainer {
     width: 100%;
     text-align: center;
+}
+
+.leftText {
+    background-image: url('/ves_logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
 }
 
 
