@@ -5,6 +5,7 @@ import Router from 'next/router'
 import { prisma } from '../lib/prisma.js';
 import { GetServerSideProps } from 'next';
 import HeaderCompanyOptions from '../components/HeaderCompanyOptions';
+import CompanySection from '../components/CompanySection';
 
 
 export const getStaticProps = async () => {
@@ -65,23 +66,10 @@ export default function Home(props) {
             <HeaderCompanyOptions />
           </div>
         </div>
-        <div className={styles.companyCards}>
-          {props.companies.map((company) => (
-            <div key={company.id} className={styles.companyOuterCard}>
-              <div className={styles.companyInnerCard}>
-                <p className={styles.companyName}>{company.name}</p>
-                <div className={styles.companySubtitle}>
-                  {company.founding_year},{' '}
-                  {company.founders.map((founder) => (
-                    <p className={styles.companyFounder}>{founder.name} ('{founder.grad_year.slice(-2)})</p>
-                  ))}
-                </div>
-                <p className={styles.fundingStage}>{company.funding_stage.name}</p>
-                <p className={styles.description}>{company.description}</p>
-              </div>
-            </div>
-          ))}
+        <div className={styles.filters}>
+          Filters
         </div>
+        <CompanySection companies={props.companies} />
       </main>
 
       <p className={styles.myFooter}>
