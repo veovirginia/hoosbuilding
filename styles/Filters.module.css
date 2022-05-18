@@ -4,6 +4,7 @@
     position: relative;
     width: auto;
     flex: 1;
+    margin-bottom: 20px;
 }
 
 .filterGroup, .filterGroupLeft {
