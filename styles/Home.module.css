@@ -29,7 +29,7 @@
     margin-top: 0px;
     padding-top: 32px;
     margin-bottom: 0px;
-    
+    font-weight: 800;
 }
 
 .desc{
@@ -117,13 +117,4 @@
     margin: auto;
     padding: 10px;
     text-align: center;
-}
-
-.filters {
-    background-color: green;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: left;
-    justify-content: left;
 }

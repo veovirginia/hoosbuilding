@@ -1,0 +1,36 @@
+.filters {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+    width: auto;
+    flex: 1;
+}
+
+.filterGroup, .filterGroupLeft {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    flex: 1;
+    font-size: 12px;
+}
+
+.filterGroupLeft {
+    margin-right: 20px;
+}
+
+.inputLabel {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.input {
+    font-size: 12px;
+    line-height: 18px;
+    display: flex;
+    padding: 10px 15px;
+    background: transparent;
+    border: 1px solid rgb(213, 213, 212);
+    border-radius: 4px;
+    color: rgb(84, 86, 90);
+    box-shadow: rgb(255 255 255) 0px 0px 10px 90px inset;
+}

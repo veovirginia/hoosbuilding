@@ -6,6 +6,7 @@ import { prisma } from '../lib/prisma.js';
 import { GetServerSideProps } from 'next';
 import HeaderCompanyOptions from '../components/HeaderCompanyOptions';
 import CompanySection from '../components/CompanySection';
+import Filters from '../components/Filters';
 
 
 export const getStaticProps = async () => {
@@ -37,11 +38,18 @@ export const getStaticProps = async () => {
     }
   });
 
-  return { props: { companies } };
+  const categories = await prisma.category.findMany();
+  console.log("categries");
+  console.log(categories);
+
+  return { props: { companies, categories } };
 };
 
 
 export default function Home(props) {
+
+  console.log("categries");
+  console.log(props.categories);
 
   return (
     <div className={styles.container}>
@@ -67,7 +75,7 @@ export default function Home(props) {
           </div>
         </div>
         <div className={styles.filters}>
-          Filters
+          <Filters categories={props.categories}/>
         </div>
         <CompanySection companies={props.companies} />
       </main>
