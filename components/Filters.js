@@ -27,28 +27,42 @@ function generateJSONOfYears(since) {
 
 export default function Filters(props) {
 
-  return (
-    <div className={styles.filters}>
-      <div className={styles.filterGroupLeft}>
-        <div className={styles.inputLabel}>Category</div>
-        <CustomListbox items={props.categories}/>
-      </div>
-      <div className={styles.filterGroupLeft}>
-        <div className={styles.inputLabel}>Company Name</div>
-        <input className={styles.input}></input>
-      </div>
-      <div className={styles.filterGroupLeft}>
-        <div className={styles.inputLabel}>Company Founder</div>
-        <input className={styles.input}></input>
-      </div>
-      <div className={styles.filterGroupLeft}>
-        <div className={styles.inputLabel}>Founding Year</div>
-        <CustomListbox items={generateJSONOfYears(2000)}/>
-      </div>
-      <div className={styles.filterGroup}>
-        <div className={styles.inputLabel}>Funding Stage</div>
-        <CustomListbox items={props.stages}/>
-      </div>
-    </div>
-  );
+    const [isFiltering, setIsFiltering] = useState(false);
+
+    function clearFilters() {
+        document.getElementById("company-name").value = ""
+        document.getElementById("company-founder").value = ""
+    }
+
+    function canClearFilters() {
+        return true;
+    }
+
+    return (
+        <div className={styles.filtersContainer}>
+            <div className={styles.filters}>
+                <div className={styles.filterGroupLeft}>
+                    <div className={styles.inputLabel}>Category</div>
+                    <CustomListbox items={props.categories}/>
+                </div>
+                <div className={styles.filterGroupLeft}>
+                    <div className={styles.inputLabel}>Company Name</div>
+                    <input className={styles.input} id="company-name"></input>
+                </div>
+                <div className={styles.filterGroupLeft}>
+                    <div className={styles.inputLabel}>Company Founder</div>
+                    <input className={styles.input} id="company-founder"></input>
+                </div>
+                <div className={styles.filterGroupLeft}>
+                    <div className={styles.inputLabel}>Founding Year</div>
+                    <CustomListbox items={generateJSONOfYears(2000)}/>
+                </div>
+                <div className={styles.filterGroup}>
+                    <div className={styles.inputLabel}>Funding Stage</div>
+                    <CustomListbox items={props.stages}/>
+                </div>
+            </div>
+            <div onClick={() => clearFilters()} className={isFiltering ? styles.clearFilters : styles.disabledClearFilters}>Clear filters</div>
+        </div>
+    );
 }

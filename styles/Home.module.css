@@ -5,7 +5,7 @@
 
 .splash {
     display: grid;
-    grid-template-rows: 1fr 20px;
+    /* grid-template-rows: 1fr 20px; */
     row-gap: 60px;
     margin-top: 80px;
 }
