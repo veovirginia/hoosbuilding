@@ -1,13 +1,23 @@
 import styles from '../styles/Filters.module.css'
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
+import { setConstantValue } from 'typescript';
 
 
 export default function CustomListbox(props) {
 
-    const [selected, setSelected] = useState('All');
+    const [selected, setSelected] = useState('');
 
+    function handleChange(e) {
+        props.filter(e)
+    }
+
+    useEffect( () => {
+        if (selected !== '' && props.isFiltering === false) {
+            setSelected('')
+        }
+    })
 
     return (
         <Listbox value={selected} onChange={setSelected}>
@@ -32,6 +42,7 @@ export default function CustomListbox(props) {
               <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                 {props.items.map((item, itemID) => (
                   <Listbox.Option
+                    onClick={() => handleChange(item.name)}
                     key={itemID}
                     className={({ active }) =>
                       `relative cursor-pointer select-none py-2 pl-10 pr-4 ${

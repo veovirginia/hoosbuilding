@@ -27,15 +27,50 @@ function generateJSONOfYears(since) {
 
 export default function Filters(props) {
 
-    const [isFiltering, setIsFiltering] = useState(false);
+    const [isFiltering, setIsFiltering] = useState(false)
+    const [categoryFilter, setCategoryFilter] = useState("");
+    const [nameFilter, setNameFilter] = useState("");
+    const [fundingFilter, setFundingFilter] = useState("");
+    const [founderFilter, setFounderFilter] = useState("");
+    const [yearFilter, setYearFilter] = useState("");
+
 
     function clearFilters() {
+        setIsFiltering(false);
         document.getElementById("company-name").value = ""
         document.getElementById("company-founder").value = ""
+        setCategoryFilter("")
+        setFundingFilter("")
+        setFounderFilter("")
+        setYearFilter("")
+        setNameFilter("")
     }
 
-    function canClearFilters() {
-        return true;
+    function handleNameFilter() {
+        setIsFiltering(true);
+        const token = document.getElementById("company-name").value
+        setNameFilter(token);
+    }
+
+    function handleFounderFilter() {
+        setIsFiltering(true);
+        const token = document.getElementById("company-founder").value
+        setFounderFilter(token);
+    }
+
+    function handleFundingFilter(token) {
+        setIsFiltering(true);
+        setFundingFilter(token);
+    }
+
+    function handleYearFilter(token) {
+        setIsFiltering(true);
+        setYearFilter(token);
+    }
+
+    function handleCategoryFilter(token) {
+        setIsFiltering(true);
+        setCategoryFilter(token)
     }
 
     return (
@@ -43,23 +78,23 @@ export default function Filters(props) {
             <div className={styles.filters}>
                 <div className={styles.filterGroupLeft}>
                     <div className={styles.inputLabel}>Category</div>
-                    <CustomListbox items={props.categories}/>
+                    <CustomListbox filter={handleCategoryFilter} items={props.categories} isFiltering={isFiltering}/>
                 </div>
                 <div className={styles.filterGroupLeft}>
                     <div className={styles.inputLabel}>Company Name</div>
-                    <input className={styles.input} id="company-name"></input>
+                    <input onChange={handleNameFilter} className={styles.input} id="company-name"></input>
                 </div>
                 <div className={styles.filterGroupLeft}>
                     <div className={styles.inputLabel}>Company Founder</div>
-                    <input className={styles.input} id="company-founder"></input>
+                    <input onChange={handleFounderFilter} className={styles.input} id="company-founder"></input>
                 </div>
                 <div className={styles.filterGroupLeft}>
                     <div className={styles.inputLabel}>Founding Year</div>
-                    <CustomListbox items={generateJSONOfYears(2000)}/>
+                    <CustomListbox filter={handleYearFilter} items={generateJSONOfYears(2000)} isFiltering={isFiltering}/>
                 </div>
                 <div className={styles.filterGroup}>
                     <div className={styles.inputLabel}>Funding Stage</div>
-                    <CustomListbox items={props.stages}/>
+                    <CustomListbox filter={handleFundingFilter} items={props.stages} isFiltering={isFiltering}/>
                 </div>
             </div>
             <div onClick={() => clearFilters()} className={isFiltering ? styles.clearFilters : styles.disabledClearFilters}>Clear filters</div>
