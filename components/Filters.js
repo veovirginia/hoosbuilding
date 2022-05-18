@@ -7,7 +7,7 @@ export default function Filters(props) {
     <div className={styles.filters}>
       <div className={styles.filterGroupLeft}>
         <div className={styles.inputLabel}>Category</div>
-        <CustomListbox categories={props.categories}/>
+        <CustomListbox items={props.categories}/>
       </div>
       <div className={styles.filterGroupLeft}>
         <div className={styles.inputLabel}>Company Name</div>
@@ -23,7 +23,7 @@ export default function Filters(props) {
       </div>
       <div className={styles.filterGroup}>
         <div className={styles.inputLabel}>Funding Stage</div>
-        <input className={styles.input}></input>
+        <CustomListbox items={props.stages}/>
       </div>
     </div>
   );

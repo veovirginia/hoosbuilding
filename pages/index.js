@@ -48,8 +48,13 @@ export const getStaticProps = async () => {
 
 export default function Home(props) {
 
-  console.log("categries");
-  console.log(props.categories);
+  const stages = [
+    { id: "Idea", name: "Idea", unavailable: false },
+    { id: "Pre-Institutional Funding", name: "Pre-Institutional Funding", unavailable: false },
+    { id: "Institutional Funding or Profitable", name: "Institutional Funding or Profitable", unavailable: false },
+    { id: "Exited/IPO", name: "Exited/IPO", unavailable: true },
+    { id: "Dissolved", name: "Dissolved", unavailable: false },
+  ];
 
   return (
     <div className={styles.container}>
@@ -75,7 +80,7 @@ export default function Home(props) {
           </div>
         </div>
         <div className={styles.filters}>
-          <Filters categories={props.categories}/>
+          <Filters categories={props.categories} stages={stages}/>
         </div>
         <CompanySection companies={props.companies} />
       </main>

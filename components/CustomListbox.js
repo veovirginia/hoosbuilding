@@ -5,7 +5,9 @@ import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 
 
 export default function CustomListbox(props) {
-    const [selected, setSelected] = useState('');
+
+    const [selected, setSelected] = useState('All');
+
 
     return (
         <Listbox value={selected} onChange={setSelected}>
@@ -28,24 +30,24 @@ export default function CustomListbox(props) {
               leaveTo="opacity-0"
             >
               <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                {props.categories.map((category, categoryID) => (
+                {props.items.map((item, itemID) => (
                   <Listbox.Option
-                    key={categoryID}
+                    key={itemID}
                     className={({ active }) =>
                       `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
                         active ? "bg-orange-100 text-orange-900" : "text-gray-900"
                       }`
                     }
-                    value={category}
+                    value={item}
                   >
                     {({ selected }) => (
                       <>
                         <span
-                          className={`block truncate ${
+                          className={`block ${
                             selected ? "font-medium" : "font-normal"
                           }`}
                         >
-                          {category.name}
+                          {item.name}
                         </span>
                         {selected ? (
                           <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-orange-600">
