@@ -62,17 +62,17 @@ export default function Home(props) {
   const [fundingf, setFundingF] = useState('');
 
 	const stages = [
-		{ id: "Idea", name: "Idea" },
+		{ id: "cl36sm4qe0013xitpinimct0t", name: "Idea" },
 		{
-			id: "Pre-Institutional Funding",
+			id: "cl36smhn30036xitpcw3ywn0t",
 			name: "Pre-Institutional Funding",
 		},
 		{
-			id: "Institutional Funding or Profitable",
+			id: "cl36sn2k80081xitpkach7tpb",
 			name: "Institutional Funding or Profitable",
 		},
-		{ id: "Exited/IPO", name: "Exited/IPO" },
-		{ id: "Dissolved", name: "Dissolved" },
+		{ id: "cl36snm5i0126xitpgdvyf1uy", name: "Exited/IPO" },
+		{ id: "cl36snrcv0149xitp9watb5bw", name: "Dissolved" },
 	];
 
 	return (
