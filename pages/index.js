@@ -116,6 +116,7 @@ export default function Home(props) {
 				<CompanySection
 					companies={props.companies}
           catFilter={props.categories.filter(c => c.name === cf)[0]}
+          catFilterName={cf}
 					nameFilter={nf}
 					founderFilter={founderf}
 					yearFilter={yf}
