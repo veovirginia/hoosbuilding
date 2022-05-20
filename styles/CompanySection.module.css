@@ -89,6 +89,10 @@
     display: inline-block;
 }
 
+.companyFounder:hover {
+    text-decoration: underline;
+}
+
 .fundingStage {
     margin-top: var(--inner-card-section-margin);
     font-size: 12px;

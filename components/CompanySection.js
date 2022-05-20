@@ -86,7 +86,9 @@ export default function CompanySection(props) {
 							{company.founding_year},{" "}
 							{company.founders.map((founder) => (
 								<b className={styles.companyFounder}>
+									<a href={founder.url}>
 									{founder.name} ('{founder.grad_year.slice(-2)})
+									</a>
 								</b>
 							))}
 						</div>
