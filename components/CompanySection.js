@@ -106,7 +106,7 @@ export default function CompanySection(props) {
 
 			{relevantCompanies.length === 0 && (
 				<div className={styles.noResults}>
-					<p>No companies found</p>
+					<div>No companies found</div>
 				</div>
 			)}
 		</div>

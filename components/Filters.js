@@ -44,13 +44,22 @@ export default function Filters(props) {
 	}
 
 	function handleNameFilter() {
-		setIsFiltering(true);
+		if (document.getElementById("company-name").value !== "") {
+			setIsFiltering(true);
+		} else {
+			setIsFiltering(false);
+		}
 		const token = document.getElementById("company-name").value;
 		setNameFilter(token);
 	}
 
 	function handleFounderFilter() {
-		setIsFiltering(true);
+		if (document.getElementById("company-founder").value !== "") {
+			setIsFiltering(true);
+		}
+		else {
+			setIsFiltering(false);
+		}
 		const token = document.getElementById("company-founder").value;
 		setFounderFilter(token);
 	}

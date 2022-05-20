@@ -131,7 +131,7 @@ export default function Home(props) {
 			</main>
 
 			<p className={styles.myFooter}>
-				Managed by v1 Virginia, Inspired by GSBuilds
+				Managed by <a href="vesatuva.org">v1 Virginia</a>, Inspired by <a href="gsbuilds.co">GSBuilds</a>
 			</p>
 		</div>
 	);

@@ -102,3 +102,19 @@
     color: grey;
     margin-top: calc(var(--inner-card-section-margin)*2);
 }
+
+.noResults {
+    display: flex;
+    min-height: 300px;
+
+    align-items: top;
+    justify-content: center;
+
+    font-style: italic;
+
+    color: var(--light-grey)
+}
+
+.noResults > div {
+    margin-top: 40px
+}
