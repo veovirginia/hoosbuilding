@@ -33,6 +33,11 @@ export const getStaticProps = async () => {
             name: true,
           },
         },
+		category: {
+			select: {
+			  name: true,
+			},
+		  },
       },
     });
     companies.map((item) => {

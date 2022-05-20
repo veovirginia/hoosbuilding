@@ -33,6 +33,7 @@ export default function CompanySection(props) {
 	};
 
 	useEffect(() => {
+		console.log(props.companies)
 		setRelevantCompanies(
 			props.companies
 				.filter((c) =>
@@ -62,23 +63,21 @@ export default function CompanySection(props) {
 					key={company.id}
 					className={styles.companyOuterCard}
 					style={{
-						backgroundColor:
-							colorDict[
-								props.categoriesList.filter((c) =>
-									c.id.match(company.categoryID)
-								)[0].name
-							],
+						backgroundColor: colorDict[company.category.name],
 					}}
 				>
-					{/* <div className={styles.companyCategory}>
-						{
-							props.categoriesList.filter((c) =>
-								c.id.match(company.categoryID)
-							)[0].name
-						}
-					</div> */}
+					<div
+						className={styles.categoryContainer}
+						style={{
+							color: colorDict[company.category.name],
+						}}
+					>
+						<div className={styles.companyCategory}>
+							{company.category.name}
+						</div>
+					</div>
 					<div className={styles.companyInnerCard}>
-						<p className={styles.companyName}>{company.name}</p>
+						<p className={styles.companyName}><a href={company.company_url}>{company.name}</a></p>
 						<div className={styles.companySubtitle}>
 							{company.founding_year},{" "}
 							{company.founders.map((founder) => (

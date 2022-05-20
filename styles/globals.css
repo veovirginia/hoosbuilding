@@ -25,3 +25,12 @@ body {
 p {
   margin: 0;
 }
+
+::selection {
+  color: none;
+  background: none;
+}
+
+input::selection {
+  background-color: lightblue;
+}
