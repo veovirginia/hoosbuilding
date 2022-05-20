@@ -70,13 +70,13 @@ export default function CompanySection(props) {
 							],
 					}}
 				>
-					<div className={styles.companyCategory}>
+					{/* <div className={styles.companyCategory}>
 						{
 							props.categoriesList.filter((c) =>
 								c.id.match(company.categoryID)
 							)[0].name
 						}
-					</div>
+					</div> */}
 					<div className={styles.companyInnerCard}>
 						<p className={styles.companyName}>{company.name}</p>
 						<div className={styles.companySubtitle}>
