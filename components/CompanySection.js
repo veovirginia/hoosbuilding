@@ -5,6 +5,10 @@ export default function CompanySection(props) {
 	const [relevantCompanies, setRelevantCompanies] = useState(props.companies);
 
 	const colorDict = {
+		"Artificial Intelligence": '#351480',
+		"Augmented / Virtual Reality": '#0c009a',
+		B2B: "#5688C7",
+		Biomedical: "#f8dc90",
 		Biotech: "#ff7a00",
 		Community: "#eb700d",
 		Consumer: "#d7661a",
