@@ -137,3 +137,47 @@
     text-decoration: none;
     color: var(--orange)
 }
+
+@media (max-width: 660px) {
+    .splashContent {
+        grid-template-columns: none!important;
+    }
+
+    .main {
+        margin-left: 32px;
+        margin-right: 32px;
+    }
+
+    .splash {
+        margin-top: 0px;
+    }
+
+    .tagline {
+        font-size: 48px;
+        text-align: center;
+    }
+
+    .desc {
+        text-align: center;
+    }
+
+    .companyOptions {
+        margin-top: 48px;
+    }
+}
+
+@media (max-width: 600px) {
+    .splashContent {
+        grid-template-columns: none!important;
+    }
+
+    .splash {
+        margin-top: 0px;
+    }
+
+    .tagline {
+        font-size: 32px;
+        margin-top: 32px;
+        padding-top: 24px;
+    }
+}
