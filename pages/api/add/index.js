@@ -2,11 +2,12 @@ import { prisma } from '../../../lib/prisma.js';
 
 // POST /api/add
 export default async function handle(req, res) {
-  const { name, description, founding_year, location, category, funding_stage } = req.body;
+  const { name, url, description, founding_year, location, category, funding_stage } = req.body;
 
   const result = await prisma.company.create({
     data: {
       name: name,
+      company_url: url,
       description: description,
       founding_year: founding_year,
       location: location,
