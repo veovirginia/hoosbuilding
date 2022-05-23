@@ -8,7 +8,7 @@ export default function HeaderCompanyOptions(props) {
 				HoosBuilding tracks the community's greatest projects - from garage to
 				IPO.
 			</p>
-			<div className={styles.addCompany} onClick={console.log("add pushed")}>
+			<div className={styles.addCompany} onClick={() => Router.push("/add")}>
 				{/*onClick={() => Router.push("/add")}*/}Add a company
 			</div>
 			<div

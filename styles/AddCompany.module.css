@@ -1,15 +1,86 @@
-.addCompany {
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
     height: 100%;
-    max-width: 480px;
+    max-width: 900px;
     margin: 0 auto;
-    padding-left:15px;
-    padding-right:15px;
+    padding-left:32px;
+    padding-right:32px;
+    margin-top: 32px;
 }
   
 .addCompany > div {
     display: block;
+}
+
+.inputSection {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 4px
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formInput {
+    padding: 10px 15px;
+    border: 1px solid rgb(213, 213, 212);
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.inputLabel {
+    margin-bottom: 8px;
+    margin-top: 12px;
+}
+
+.labelGroup {
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.labelSubtitle {
+    margin-left: .5rem
+}
+
+.sectionHeading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 24px;
+    margin-bottom: 0px;
+}
+
+.submitButton {
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #EF5701;
+    color: white;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+    .inputSection {
+        flex-direction: column!important;
+    }
+
+    .formInput {
+        width: 100% !important;
+    }
+
+    .inputGroup {
+        margin-left: 0!important;
+    }
 }
