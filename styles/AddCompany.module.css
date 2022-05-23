@@ -68,7 +68,43 @@
 .title {
     font-size: 32px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 10px
+}
+
+#companyURL {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+#companyLocation, #category, #fundingStage {
+    margin-left: 20px;
+    width: calc(25% - 20px);
+}
+
+#foundingYear {
+    width: calc(25% - 20px);
+}
+
+#companyLocation {
+    flex-grow: 1;
+}
+
+#founderName, #founderGradYear {
+    width: calc(25% - 20px);
+}
+
+#founderGradYear, #founderURL {
+    margin-left: 20px;
+}
+
+#founderURL {
+    flex-grow: 1;
+}
+
+@media (max-width: 670px) {
+    .inputSection, .labelGroup {
+        font-size: 12px!important;
+    }
 }
 
 @media (max-width: 600px) {
@@ -82,5 +118,19 @@
 
     .inputGroup {
         margin-left: 0!important;
+    }
+
+    #companyURL {
+        margin-left: 0!important;
+    }
+
+    #companyLocation, #category, #fundingStage, #foundingYear {
+        margin-left: 0!important;
+        width: 100% !important;
+    }
+
+    #founderName, #founderGradYear, #founderURL {
+        margin-left: 0!important;
+        width: 100% !important;
     }
 }

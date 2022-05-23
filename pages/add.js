@@ -87,7 +87,7 @@ export default function Add() {
 						onChange={(e) => setName(e.target.value)}
 					></input>
 				</div>
-				<div className={styles.inputGroup}>
+				<div className={styles.inputGroup} id={styles.companyURL}>
 					<label className={styles.inputLabel}>
 						<b>Company URL</b>
 					</label>
@@ -110,7 +110,7 @@ export default function Add() {
 				onChange={(e) => setDescription(e.target.value)}
 			></input>
 			<div className={styles.inputSection}>
-				<div className={styles.inputGroup}>
+				<div className={styles.inputGroup} id={styles.foundingYear}>
 					<label className={styles.inputLabel}>
 						<b>Founding Year</b>
 					</label>
@@ -119,7 +119,25 @@ export default function Add() {
 						onChange={(e) => setFoundingYear(e.target.value)}
 					></input>
 				</div>
-				<div className={styles.inputGroup}>
+        <div className={styles.inputGroup} id={styles.category}>
+					<label className={styles.inputLabel}>
+						<b>Category</b>
+					</label>
+					<input
+						className={styles.formInput}
+						onChange={(e) => setCategory(e.target.value)}
+					></input>
+				</div>
+				<div className={styles.inputGroup} id={styles.fundingStage}>
+					<label className={styles.inputLabel}>
+						<b>Funding Stage</b>
+					</label>
+					<input
+						className={styles.formInput}
+						onChange={(e) => setFundingStage(e.target.value)}
+					></input>
+				</div>
+        <div className={styles.inputGroup} id={styles.companyLocation}>
 					<label className={styles.inputLabel}>
 						<b>Company Location</b>
 					</label>
@@ -129,29 +147,11 @@ export default function Add() {
 					></input>
 				</div>
 			</div>
-			<div className={styles.inputSection}>
-				<div className={styles.inputGroup}>
-					<label className={styles.inputLabel}>
-						<b>Category</b>
-					</label>
-					<input
-						className={styles.formInput}
-						onChange={(e) => setCategory(e.target.value)}
-					></input>
-				</div>
-				<div className={styles.inputGroup} id={styles.email}>
-					<label className={styles.inputLabel}>
-						<b>Funding Stage</b>
-					</label>
-					<input
-						className={styles.formInput}
-						onChange={(e) => setFundingStage(e.target.value)}
-					></input>
-				</div>
-			</div>
+
+      <br />
 
 			<div className={styles.inputSection}>
-				<div className={styles.inputGroup}>
+				<div className={styles.inputGroup} id={styles.founderName}>
 					<label className={styles.inputLabel}>
 						<b>Founder Name</b>
 					</label>
@@ -160,7 +160,7 @@ export default function Add() {
 						onChange={(e) => setFounderName(e.target.value)}
 					></input>
 				</div>
-				<div className={styles.inputGroup}>
+				<div className={styles.inputGroup} id={styles.founderGradYear}>
 					<label className={styles.inputLabel}>
 						<b>Founder Grad Year</b>
 					</label>
@@ -169,7 +169,7 @@ export default function Add() {
 						onChange={(e) => setFounderGradYear(e.target.value)}
 					></input>
 				</div>
-				<div className={styles.inputGroup}>
+				<div className={styles.inputGroup} id={styles.founderURL}>
 					<label className={styles.inputLabel}>
 						<b>Founder URL</b>
 					</label>
