@@ -99,8 +99,7 @@ export default function Home(props) {
 								</h1>
 								<p className={styles.desc}>
 									We’re bringing together the best and brightest builders in
-									Charlottesville. Members have access to exclusive yada yada
-									yada blah blah blah words etc. etc.
+									Charlottesville. Members have access to etc. etc.
 								</p>
 							</div>
 							<div className={styles.interestedContainer}>
