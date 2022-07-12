@@ -9,14 +9,14 @@ export default function HeaderCompanyOptions(props) {
 				IPO.
 			</p>
 			<div className={styles.addCompany} onClick={() => Router.push("/add")}>
-				{/*onClick={() => Router.push("/add")}*/}Add a company
+				Add a company
 			</div>
-			<div
+			{/* <div
 				className={styles.updateCompany}
 				onClick={console.log("update pushed")}
 			>
 				Update a company
-			</div>
+			</div> */}
 		</div>
 	);
 }

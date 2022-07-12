@@ -35,3 +35,19 @@ p {
 input::selection {
   background-color: lightblue;
 }
+
+button {
+  border: 0;
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+ filter: brightness(0.9);
+}
+
+button:active {
+ filter: brightness(0.8);
+}

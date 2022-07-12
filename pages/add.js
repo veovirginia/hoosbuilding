@@ -2,36 +2,50 @@ import { prisma } from "../lib/prisma.js";
 import Router from "next/router";
 import React, { useState } from "react";
 import styles from "../styles/AddCompany.module.css";
+import CustomListbox from "../components/CustomListbox.js";
 
 export const getStaticProps = async () => {
-	const companies = await prisma.company.findMany({
-		where: { published: true },
-		include: {
-			founders: {
-				select: {
-					name: true,
-					grad_year: true,
-					url: true,
-					email: true,
-				},
-			},
-			funding_stage: {
-				select: {
-					name: true,
-				},
-			},
-		},
-	});
-	companies.map((item) => {
-		if (item.createdAt !== null) {
-			item.createdAt = item.createdAt.toString();
-		}
-	});
+	var categories = await prisma.category.findMany();
 
-	return { props: { companies } };
+	return { props: { categories } };
 };
 
-export default function Add() {
+const stages = [
+	{ id: "cl36sm4qe0013xitpinimct0t", name: "Idea" },
+	{
+		id: "cl36smhn30036xitpcw3ywn0t",
+		name: "Pre-Institutional Funding",
+	},
+	{
+		id: "cl36sn2k80081xitpkach7tpb",
+		name: "Institutional Funding or Profitable",
+	},
+	{ id: "cl36snm5i0126xitpgdvyf1uy", name: "Exited/IPO" },
+	{ id: "cl36snrcv0149xitp9watb5bw", name: "Dissolved" },
+];
+
+function generateJSONOfYears(since, to) {
+	var max = new Date().getFullYear() + to;
+	var min = since;
+	console.log("max: " + max);
+	console.log("min: " + min);
+	var years = [];
+
+	for (var i = max; i >= min; i--) {
+		years.push(i);
+	}
+
+	var toReturn = [];
+	for (var i in years) {
+		toReturn.push({ id: years[i], name: years[i] });
+	}
+
+	console.log(toReturn);
+
+	return toReturn;
+}
+
+export default function Add(props) {
 	const [name, setName] = useState("");
 	const [url, setCompanyURL] = useState("");
 	const [description, setDescription] = useState("");
@@ -44,7 +58,28 @@ export default function Add() {
 	const [founder_grad_year, setFounderGradYear] = useState("");
 	const [founder_url, setFounderURL] = useState("");
 
+	// function that gets the id of a stage given the name
+	const getStageId = (name) => {
+		for (var i = 0; i < stages.length; i++) {
+			if (stages[i].name === name) {
+				return stages[i].id;
+			}
+		}
+	}
+
+	//function that gets the id of a category given the name
+	const getCategoryId = (name) => {
+		for (var i = 0; i < props.categories.length; i++) {
+			if (props.categories[i].name === name) {
+				return props.categories[i].id;
+			}
+		}
+	}
+
 	const submitData = async () => {
+		const stageId = getStageId(funding_stage);
+		const categoryId = getCategoryId(category);
+
 		try {
 			const body = {
 				name,
@@ -52,8 +87,8 @@ export default function Add() {
 				description,
 				founding_year,
 				location,
-				category,
-				funding_stage,
+				categoryId,
+				stageId,
 				founder_name,
 				founder_grad_year,
 				founder_url,
@@ -68,11 +103,27 @@ export default function Add() {
 			//     headers: { 'Content-Type': 'application/json' },
 			//     body: JSON.stringify(body),
 			//   }))
-			await Router.push("/");
+			props.handleSuccess()
 		} catch (error) {
 			console.error(error);
 		}
 	};
+
+	function handleFundingChange(e) {
+		setFundingStage(e);
+	}
+
+	function handleCategoryChange(e) {
+		setCategory(e);
+	}
+
+	function handleYearChange(e) {
+		setFoundingYear(e);
+	}
+
+	function handleGradYearChange(e) {
+		setFounderGradYear(e);
+	}
 
 	return (
 		<div className={styles.container}>
@@ -114,30 +165,33 @@ export default function Add() {
 					<label className={styles.inputLabel}>
 						<b>Founding Year</b>
 					</label>
-					<input
-						className={styles.formInput}
-						onChange={(e) => setFoundingYear(e.target.value)}
-					></input>
+					<CustomListbox
+						filter={handleYearChange}
+						items={generateJSONOfYears(2000, 0)}
+						isFiltering={true}
+					/>
 				</div>
-        <div className={styles.inputGroup} id={styles.category}>
+				<div className={styles.inputGroup} id={styles.category}>
 					<label className={styles.inputLabel}>
 						<b>Category</b>
 					</label>
-					<input
-						className={styles.formInput}
-						onChange={(e) => setCategory(e.target.value)}
-					></input>
+					<CustomListbox
+						filter={handleCategoryChange}
+						items={props.categories}
+						isFiltering={true}
+					/>
 				</div>
 				<div className={styles.inputGroup} id={styles.fundingStage}>
 					<label className={styles.inputLabel}>
 						<b>Funding Stage</b>
 					</label>
-					<input
-						className={styles.formInput}
-						onChange={(e) => setFundingStage(e.target.value)}
-					></input>
+					<CustomListbox
+						filter={handleFundingChange}
+						items={stages}
+						isFiltering={true}
+					/>
 				</div>
-        <div className={styles.inputGroup} id={styles.companyLocation}>
+				<div className={styles.inputGroup} id={styles.companyLocation}>
 					<label className={styles.inputLabel}>
 						<b>Company Location</b>
 					</label>
@@ -148,7 +202,7 @@ export default function Add() {
 				</div>
 			</div>
 
-      <br />
+			<br />
 
 			<div className={styles.inputSection}>
 				<div className={styles.inputGroup} id={styles.founderName}>
@@ -164,10 +218,11 @@ export default function Add() {
 					<label className={styles.inputLabel}>
 						<b>Founder Grad Year</b>
 					</label>
-					<input
-						className={styles.formInput}
-						onChange={(e) => setFounderGradYear(e.target.value)}
-					></input>
+					<CustomListbox
+						filter={handleGradYearChange}
+						items={generateJSONOfYears(2000, 4)}
+						isFiltering={true}
+					/>
 				</div>
 				<div className={styles.inputGroup} id={styles.founderURL}>
 					<label className={styles.inputLabel}>
@@ -179,7 +234,9 @@ export default function Add() {
 					></input>
 				</div>
 			</div>
-      <button className={styles.submitButton} onClick={submitData}>Submit</button>
+			<button className={styles.submitButton} onClick={submitData}>
+				Submit
+			</button>
 		</div>
 	);
 }

@@ -1,0 +1,60 @@
+.successOverlayContainer {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    z-index: 1;
+    opacity: 1;
+    font-size: 14px;
+ 
+    text-align: left;
+ }
+ 
+ .successContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    max-height: 90%;
+    padding: 16px;
+    border: 1px solid lightGrey;
+    width: 500px;
+    border-radius: 8px;
+    max-width: 80vw
+ }
+ 
+ .successContainer > p {
+    text-align: left;
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+    font-size: 14px;
+ }
+
+ .homeButton {
+    display: inline-block;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #EF5701;
+    color: white;
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+    font-size: 14px;
+    border-radius: 8px;
+ }
+ 
+ @media (max-width: 750px) {
+    .inputSection {
+       flex-direction: column !important;
+    }
+ 
+    .formInput {
+       width: 100% !important;
+    }
+ 
+    .inputGroup {
+       margin-left: 0 !important;
+    }
+ }
