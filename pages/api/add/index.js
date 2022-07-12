@@ -10,7 +10,8 @@ export default async function handle(req, res) {
       name: name,
       company_url: url,
       description: description,
-      founding_year: founding_year,
+      // this makes it a string, which is necessary?
+      founding_year: founding_year + "",
       location: location,
       category: {
         connect: {
@@ -25,7 +26,8 @@ export default async function handle(req, res) {
       founders: {
         create: {
           name: founder_name,
-          grad_year: founder_grad_year,
+          // same for this one
+          grad_year: founder_grad_year + "",
           url: founder_url,
         },
       },

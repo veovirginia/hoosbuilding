@@ -54,7 +54,7 @@
     margin-bottom: 0px;
 }
 
-.submitButton {
+.submitButton, .disabledSubmitButton {
     padding: 8px 16px;
     cursor: pointer;
     background-color: #EF5701;
@@ -63,6 +63,11 @@
     margin-left: auto;
     border-radius: 4px;
     margin-top: 20px;
+}
+
+.disabledSubmitButton {
+    filter: brightness(0.8);
+    cursor: default!important;
 }
 
 .title {

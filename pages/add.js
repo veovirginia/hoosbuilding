@@ -3,6 +3,7 @@ import Router from "next/router";
 import React, { useState } from "react";
 import styles from "../styles/AddCompany.module.css";
 import CustomListbox from "../components/CustomListbox.js";
+import { useEffect } from "react";
 
 export const getStaticProps = async () => {
 	var categories = await prisma.category.findMany();
@@ -58,6 +59,14 @@ export default function Add(props) {
 	const [founder_grad_year, setFounderGradYear] = useState("");
 	const [founder_url, setFounderURL] = useState("");
 
+	const [canSubmit, setCanSubmit] = useState(false);
+
+	useEffect(() => {
+		if (name !== "" && url !== "" && description !== "" && founding_year !== "" && location !== "" && category !== "" && funding_stage !== "" && founder_name !== "" && founder_grad_year !== "" && founder_url !== "") {
+			setCanSubmit(true);
+		}
+	}, [name, url, description, founding_year, location, category, funding_stage, founder_name, founder_grad_year, founder_url]);
+
 	// function that gets the id of a stage given the name
 	const getStageId = (name) => {
 		for (var i = 0; i < stages.length; i++) {
@@ -77,6 +86,10 @@ export default function Add(props) {
 	}
 
 	const submitData = async () => {
+		if (!canSubmit) {
+			return;
+		}
+
 		const stageId = getStageId(funding_stage);
 		const categoryId = getCategoryId(category);
 
@@ -124,6 +137,8 @@ export default function Add(props) {
 	function handleGradYearChange(e) {
 		setFounderGradYear(e);
 	}
+
+
 
 	return (
 		<div className={styles.container}>
@@ -234,9 +249,9 @@ export default function Add(props) {
 					></input>
 				</div>
 			</div>
-			<button className={styles.submitButton} onClick={submitData}>
+			<div className={canSubmit ? styles.submitButton : styles.disabledSubmitButton} onClick={submitData}>
 				Submit
-			</button>
+			</div>
 		</div>
 	);
 }
